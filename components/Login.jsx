@@ -1,11 +1,15 @@
-import { StyleSheet, Text, View, Image, Button, TextInput, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, KeyboardAvoidingView, TextInput,} from 'react-native';
 import logo from '../assets/area-verde.png';
 
 import React from 'react'
 
+var height = Dimensions.get('window').height;
+var width = Dimensions.get('window').width;
+
 const Login = () => {
   return (
     <>
+    <KeyboardAvoidingView behavior='position'>
     <View style={styles.image}>
       <Image style={styles.image} source={logo}/>
     </View>
@@ -23,6 +27,7 @@ const Login = () => {
         <Text style={styles.button}>Entrar</Text>
       </TouchableOpacity>
     </View>
+    </KeyboardAvoidingView>
     </>
   )
 }
@@ -34,30 +39,33 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 80,
+    marginTop: height * 0.08,
   },
   buttonDiv: {
     display: 'flex',
-    gap: 5,
+    gap: width * 0.015,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%'
+    width: width * 1,
+    marginBottom: height *0.02
   },
   button: {
+    fontSize: height * 0.02,
     textAlign: 'center',
     alignItems: 'center',
-    width: "50%",
-    padding: 8,
+    width: width * 0.6,
+    padding: width * 0.015,
     backgroundColor: '#13BB5B',
     color: 'white',
     borderRadius: 20,
   },
   input: {
+    fontSize: height * 0.02,
     textAlign: 'center',
     alignItems: 'center',
-    width: "50%",
-    padding: 10,
+    width: width * 0.6,
+    padding: width * 0.02,
     backgroundColor: '#E6E6E6',
     borderRadius: 20,
-  }
-})
+  },
+});
