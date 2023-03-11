@@ -1,2 +1,2 @@
-# Area-Verde
-This project is...
+# area-verde-app
+Aplicativo mobile
