@@ -1,6 +1,6 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, KeyboardAvoidingView, TextInput,} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, KeyboardAvoidingView, TextInput} from 'react-native';
 import logo from '../assets/area-verde.png';
-
+import {Link} from "expo-router";
 import React from 'react'
 
 var height = Dimensions.get('window').height;
@@ -26,6 +26,8 @@ const Login = () => {
       <TouchableOpacity style={styles.button}>
         <Text style={styles.button}>Entrar</Text>
       </TouchableOpacity>
+      <Link style={styles.hyperlinkStyle} href="/Register">Criar conta
+      </Link>
     </View>
     </KeyboardAvoidingView>
     </>
@@ -68,4 +70,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#E6E6E6',
     borderRadius: 20,
   },
+  hyperlinkStyle: {
+    fontSize: height * 0.02,
+    color: "gray",
+    textDecorationLine: 'underline',
+    marginTop: height * 0.01,
+    marginBottom: height * 0.02,
+    }
 });

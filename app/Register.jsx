@@ -1,10 +1,12 @@
 import {StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, KeyboardAvoidingView, TextInput,} from 'react-native';
-import React from 'react'
+import React from 'react';
+import { useNavigation } from "expo-router";
 
 var height = Dimensions.get('window').height;
 var width = Dimensions.get('window').width;
 
 const Register = () => {
+  const navigation = useNavigation();
   return (
     <KeyboardAvoidingView behavior="position">
         <View style={styles.container}>
@@ -24,11 +26,10 @@ const Register = () => {
             <Text style={styles.button}>Criar
             </Text>
           </TouchableOpacity>
-          <Text
-            style={styles.hyperlinkStyle}
-            onPress={() => {
-              Linking.openURL();
-            }}>Voltar
+          <Text style={styles.hyperlinkStyle}
+        onPress={() => {
+          navigation.goBack();
+        }}>Voltar
           </Text></View>
     </KeyboardAvoidingView>
   )}
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: height * 0.03,
+        fontWeight: "bold"
     },
     input: {
         fontSize: height * 0.02,

@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "area-verde",
     "name": "area-verde",
     "slug": "area-verde",
     "version": "1.0.0",
@@ -24,7 +25,8 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/area-verde.png",
+      "bundler": "metro"
     }
   }
 }
