@@ -1,12 +1,10 @@
-import Login from './Login';
-import Register from './Register';
+import Menu from './Menu';
 
 import React from 'react'
 
 const App = () => {
   return (
-    <Login/>
-    // <Register/>
+    <Menu/>
   )
 }
 
