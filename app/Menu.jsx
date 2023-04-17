@@ -8,7 +8,6 @@ import {
   TextInput,
   Button,
 } from "react-native";
-import logo from "../assets/area-verde.png";
 import header from '../assets/header.png';
 import { Link } from "expo-router";
 import React from "react";
@@ -33,12 +32,9 @@ const Menu = () => {
         <Link style={styles.button} href="/Groups">
           Consultar grupos
         </Link>
-        {/* <Button
-        title="Press me"
-        color="#f194ff"
-        /> */}
-        {/* <Link style={styles.button}>Notícias
-        </Link> */}
+        <Link style={styles.button} href="/Schedule">
+          Consultar grade de aulas
+        </Link>
       </View>
     </>
   );
