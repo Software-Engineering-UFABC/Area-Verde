@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  TextInput,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions, TextInput, ScrollView, } from "react-native";
 import { Link } from "expo-router";
 import React from "react";
 
@@ -14,45 +8,45 @@ var width = Dimensions.get("window").width;
 const Groups = () => {
   return (
     <>
-      <View style={styles.container}>
-        <Text style={styles.title}>Insira o código da disciplina</Text>
-        <TextInput style={styles.input} placeholder="ex: MCTA026-13" />
-        <View style={styles.container2}>
-          <View style={styles.row}>
-            <View style={{ flex: 3 }}>
-              <Text style={{ fontSize: height * 0.02, fontWeight: "bold" }}>
-                Disciplina
-              </Text>
+      <ScrollView>
+        <View style={styles.container}>
+          <Text style={styles.title}>Insira o código da disciplina</Text>
+          <TextInput style={styles.input} placeholder="ex: MCTA026-13" />
+          <View style={styles.container2}>
+            <View style={styles.row}>
+              <View style={{ flex: 3 }}>
+                <Text style={{ fontSize: height * 0.02, fontWeight: "bold" }}>
+                  Disciplina
+                </Text>
+              </View>
+              <View style={{ flex: 3 }}>
+                <Text style={{ fontSize: height * 0.02, fontWeight: "bold" }}>
+                  Professor
+                </Text>
+              </View>
+              <View style={{ flex: 1.5 }}>
+                <Text style={{ fontSize: height * 0.02, fontWeight: "bold" }}>
+                  Turma
+                </Text>
+              </View>
             </View>
-            <View style={{ flex: 3 }}>
-              <Text style={{ fontSize: height * 0.02, fontWeight: "bold" }}>
-                Professor
-              </Text>
+            <View styles />
+            <View style={styles.container3}>
+              <View style={styles.line}></View>
+              <View style={styles.row}>
+                <Text style={{ flex: 3, fontSize: height * 0.02 }}>
+                  Funções de Uma Váriável
+                </Text>
+                <Text style={{ flex: 3, fontSize: height * 0.02 }}>
+                  Annibal Hetem Junior
+                </Text>
+                <Text style={{ flex: 1.5, fontSize: height * 0.02 }}>DA1</Text>
+              </View>
+              <Text style={styles.button}>link</Text>
             </View>
-            <View style={{ flex: 1.5 }}>
-              <Text style={{ fontSize: height * 0.02, fontWeight: "bold" }}>
-                Turma
-              </Text>
-            </View>
-          </View>
-          <View styles/>
-          <View style={styles.container3}>
-            <View style={styles.line}></View>
-          <View style={styles.row}>
-            <Text style={{ flex: 3, fontSize: height * 0.02,}}>
-              Funções de Uma Váriável
-            </Text>
-            <Text style={{ flex: 3, fontSize: height * 0.02,}}>
-              Annibal Hetem Junior
-            </Text>
-            <Text style={{ flex: 1.5, fontSize: height * 0.02,}}>
-              DA1
-            </Text>
-            </View>
-            <Text style={styles.button}>link</Text>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };
@@ -81,7 +75,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   container3: {
-    gap:10,
+    gap: 10,
   },
   row: {
     display: "flex",
@@ -100,18 +94,18 @@ const styles = StyleSheet.create({
   },
   button: {
     fontSize: height * 0.02,
-    textAlign: 'center',
-    alignItems: 'center',
-    width: '100%',
+    textAlign: "center",
+    alignItems: "center",
+    width: "100%",
     padding: width * 0.015,
-    backgroundColor: '#ffffff',
-    color: 'black',
+    backgroundColor: "#ffffff",
+    color: "black",
     borderWidth: 1,
     borderRadius: 20,
   },
   line: {
-    backgroundColor: 'black',
+    backgroundColor: "black",
     height: 1,
-    width: '100%',
+    width: "100%",
   },
 });
