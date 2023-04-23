@@ -1,17 +1,68 @@
-import { StyleSheet, Text, View, Dimensions, TextInput, ScrollView, } from "react-native";
-import { Link } from "expo-router";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  TextInput,
+  ScrollView,
+  ActivityIndicator,
+} from "react-native";
+import axios from "axios";
 
 var height = Dimensions.get("window").height;
 var width = Dimensions.get("window").width;
 
 const Groups = () => {
+  const [coursesData, setCoursesData] = useState([]);
+  const [initialData, setInitialData] = useState({});
+  const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const fetchUser = async () => {
+    const url =
+      "https://projeto-area-verde-default-rtdb.firebaseio.com/db.json";
+    const response = await axios.get(url);
+
+    setCoursesData(response.data);
+    setInitialData(response.data);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+  useEffect(() => {
+    if (input === "") {
+      setCoursesData(initialData);
+    } else {
+      setCoursesData(initialData);
+      const word = input
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+      const results = coursesData.filter((course) =>
+        String(course.TURMA)
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+          .includes(word)
+      );
+      setCoursesData(results);
+    }
+  }, [input]);
   return (
     <>
       <ScrollView>
         <View style={styles.container}>
-          <Text style={styles.title}>Insira o código da disciplina</Text>
-          <TextInput style={styles.input} placeholder="ex: MCTA026-13" />
+          <Text style={styles.title}>Insira o nome da disciplina:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="ex: Álgebra Linear"
+            value={input}
+            onChangeText={(event) => {
+              setInput(event);
+            }}
+          />
           <View style={styles.container2}>
             <View style={styles.row}>
               <View style={{ flex: 3 }}>
@@ -24,25 +75,43 @@ const Groups = () => {
                   Professor
                 </Text>
               </View>
-              <View style={{ flex: 1.5 }}>
+              <View style={{ flex: 2 }}>
                 <Text style={{ fontSize: height * 0.02, fontWeight: "bold" }}>
-                  Turma
+                  Turno
                 </Text>
               </View>
             </View>
-            <View styles />
+            <View />
             <View style={styles.container3}>
-              <View style={styles.line}></View>
-              <View style={styles.row}>
-                <Text style={{ flex: 3, fontSize: height * 0.02 }}>
-                  Funções de Uma Váriável
-                </Text>
-                <Text style={{ flex: 3, fontSize: height * 0.02 }}>
-                  Annibal Hetem Junior
-                </Text>
-                <Text style={{ flex: 1.5, fontSize: height * 0.02 }}>DA1</Text>
-              </View>
-              <Text style={styles.button}>link</Text>
+              {isLoading && <ActivityIndicator size="small" color="#13BB5B" />}
+              {!isLoading &&
+                coursesData.map((data) => (
+                  <View key={data["CÓDIGO DE TURMA"]}>
+                    <View style={styles.line}></View>
+                    <View style={styles.row}>
+                      <Text style={{ flex: 3, fontSize: height * 0.02 }}>
+                        {data.TURMA.slice(0, data.TURMA.indexOf("-"))}
+                      </Text>
+                      <Text
+                        style={{
+                          flex: 3,
+                          fontSize: height * 0.02,
+                          textTransform: "capitalize",
+                        }}
+                      >
+                        {data["DOCENTE TEORIA"]}
+                      </Text>
+                      <Text style={{ flex: 2, fontSize: height * 0.02 }}>
+                        {data.TURMA.slice(data.TURMA.indexOf("-"))
+                          .replaceAll("-", "")
+                          .replace("(São Bernardo do Campo)", " SBC")
+                          .replace("(Santo André)", " SA")
+                          .replace("TURMA MINISTRADA EM INGLÊS", "")}
+                      </Text>
+                    </View>
+                    <Text style={styles.button}>link</Text>
+                  </View>
+                ))}
             </View>
           </View>
         </View>
@@ -102,10 +171,13 @@ const styles = StyleSheet.create({
     color: "black",
     borderWidth: 1,
     borderRadius: 20,
+    marginBottom: height * 0.02,
+    marginTop: height * 0.01,
   },
   line: {
     backgroundColor: "black",
     height: 1,
     width: "100%",
+    marginBottom: height * 0.02,
   },
 });
