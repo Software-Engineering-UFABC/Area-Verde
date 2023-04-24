@@ -3,10 +3,7 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
   Dimensions,
-  TextInput,
-  Button,
 } from "react-native";
 import header from '../assets/header.png';
 import { Link } from "expo-router";
@@ -35,6 +32,9 @@ const Menu = () => {
         <Link style={styles.button} href="/Schedule">
           Consultar grade de aulas
         </Link>
+        <Link style={styles.button} href="/Notices">
+          Consultar Notícias
+        </Link>
       </View>
     </>
   );
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     alignItems: "center",
-    marginTop: height * 0.05,
+    marginTop: height * 0.1,
     gap: 20,
   },
   title: {
@@ -63,37 +63,28 @@ const styles = StyleSheet.create({
   },
   buttonDiv: {
     display: "flex",
-    gap: width * 0.015,
     alignItems: "center",
     justifyContent: "center",
     width: width * 1,
-    marginBottom: height * 0.02,
   },
   button: {
-    fontSize: height * 0.02,
+    fontSize: height * 0.021,
     fontWeight: "bold",
     textAlign: "center",
     alignItems: "center",
     width: width * 0.9,
-    padding: width * 0.045,
+    padding: width * 0.065,
     backgroundColor: "#13BB5B",
     color: "white",
-    borderRadius: 20,
-  },
-  input: {
-    fontSize: height * 0.02,
-    textAlign: "center",
-    alignItems: "center",
-    width: width * 0.6,
-    padding: width * 0.02,
-    backgroundColor: "#E6E6E6",
-    borderRadius: 20,
-  },
-  hyperlinkStyle: {
-    fontSize: height * 0.02,
-    color: "gray",
-    textDecorationLine: "underline",
-    marginTop: height * 0.01,
-    marginBottom: height * 0.02,
+    borderRadius: 30,
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 6,
+},
+shadowOpacity: 0.39,
+shadowRadius: 8.30,
+
+elevation: 13,
   },
 });
