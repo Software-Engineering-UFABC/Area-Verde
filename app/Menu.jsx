@@ -4,8 +4,14 @@ import {
   View,
   Image,
   Dimensions,
+  ScrollView,
 } from "react-native";
-import header from '../assets/header.png';
+import header from "../assets/header.png";
+import home from "../assets/home.png";
+import calendar from "../assets/calendar.png";
+import search from "../assets/search.png";
+import newspaper from "../assets/newspaper.png";
+import account from "../assets/account.png";
 import { Link } from "expo-router";
 import React from "react";
 
@@ -20,21 +26,34 @@ const Menu = () => {
           <Image style={styles.image} source={header} />
         </View>
         <Text style={styles.title}>O que você deseja?</Text>
-        <Link style={styles.button} href="/Login">
-          Fazer login
-        </Link>
-        <Link style={styles.button} href="/Register">
-          Criar conta
-        </Link>
-        <Link style={styles.button} href="/Groups">
-          Consultar grupos
-        </Link>
-        <Link style={styles.button} href="/Schedule">
-          Consultar grade de aulas
-        </Link>
-        <Link style={styles.button} href="/Notices">
-          Consultar Notícias
-        </Link>
+        <ScrollView>
+          <View style={styles.row}>
+            <Link style={styles.button} href="/Login">
+              Fazer login
+              <Image style={styles.image2} source={home} />
+            </Link>
+            <Link style={styles.button} href="/Register">
+              Criar conta
+              <Image style={styles.image2} source={account} />
+            </Link>
+          </View>
+          <View style={styles.row}>
+            <Link style={styles.button} href="/Groups">
+              Ver Grupos
+              <Image style={styles.image2} source={search} />
+            </Link>
+            <Link style={styles.button} href="/Schedule">
+              Ver Grade
+              <Image style={styles.image2} source={calendar}/>
+            </Link>
+          </View>
+          <View style={styles.row}>
+            <Link style={styles.button} href="/Notices">
+              Ver Notícias
+              <Image style={styles.image2} source={newspaper} />
+            </Link>
+          </View>
+        </ScrollView>
       </View>
     </>
   );
@@ -50,6 +69,13 @@ const styles = StyleSheet.create({
     height: height * 0.1,
     resizeMode: "contain",
   },
+  image2: {
+    // display: "flex",
+    // justifyContent: "center",
+    // alignContent: "center",
+    height: height * 0.05,
+    resizeMode: "contain",
+  },
   container: {
     display: "flex",
     alignItems: "center",
@@ -61,30 +87,29 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     padding: width * 0.02,
   },
-  buttonDiv: {
+  row: {
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    width: width * 1,
+    flexDirection: "row",
+    gap: width * 0.03,
+    padding: width * 0.02,
   },
   button: {
     fontSize: height * 0.021,
     fontWeight: "bold",
     textAlign: "center",
-    alignItems: "center",
-    width: width * 0.9,
-    padding: width * 0.065,
+    width: width * 0.45,
+    height: width * 0.4,
+    padding: width * 0.1,
     backgroundColor: "#13BB5B",
     color: "white",
     borderRadius: 30,
     shadowColor: "#000",
-shadowOffset: {
-	width: 0,
-	height: 6,
-},
-shadowOpacity: 0.39,
-shadowRadius: 8.30,
-
-elevation: 13,
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.39,
+    shadowRadius: 8.3,
+    elevation: 13,
   },
 });
