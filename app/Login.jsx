@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: height * 0.08,
+    marginTop: height * 0.05,
   },
   buttonDiv: {
     display: 'flex',

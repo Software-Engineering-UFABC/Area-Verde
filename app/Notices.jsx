@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: "100%",
+    resizeMode: "contain",
   },
   container3: {
     gap: width * 0.02,
